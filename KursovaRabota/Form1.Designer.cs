@@ -49,6 +49,8 @@
             this.labelLastName = new System.Windows.Forms.Label();
             this.checkBoxLangFr = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBoxAge = new System.Windows.Forms.TextBox();
+            this.labelAge = new System.Windows.Forms.Label();
             this.groupBoxSex.SuspendLayout();
             this.groupBoxEducation.SuspendLayout();
             this.groupBoxLanguages.SuspendLayout();
@@ -185,7 +187,7 @@
             this.groupBoxLanguages.Controls.Add(this.checkBoxLangEn);
             this.groupBoxLanguages.Location = new System.Drawing.Point(301, 12);
             this.groupBoxLanguages.Name = "groupBoxLanguages";
-            this.groupBoxLanguages.Size = new System.Drawing.Size(223, 162);
+            this.groupBoxLanguages.Size = new System.Drawing.Size(223, 120);
             this.groupBoxLanguages.TabIndex = 5;
             this.groupBoxLanguages.TabStop = false;
             this.groupBoxLanguages.Text = "Чужди Езици";
@@ -259,18 +261,37 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(470, 294);
+            this.button1.Location = new System.Drawing.Point(453, 304);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBoxAge
+            // 
+            this.textBoxAge.Location = new System.Drawing.Point(358, 153);
+            this.textBoxAge.Name = "textBoxAge";
+            this.textBoxAge.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAge.TabIndex = 10;
+            // 
+            // labelAge
+            // 
+            this.labelAge.AutoSize = true;
+            this.labelAge.Location = new System.Drawing.Point(302, 153);
+            this.labelAge.Name = "labelAge";
+            this.labelAge.Size = new System.Drawing.Size(50, 13);
+            this.labelAge.TabIndex = 11;
+            this.labelAge.Text = "Възраст";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 329);
+            this.ClientSize = new System.Drawing.Size(540, 336);
+            this.Controls.Add(this.labelAge);
+            this.Controls.Add(this.textBoxAge);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelLastName);
             this.Controls.Add(this.labelSurName);
@@ -317,6 +338,8 @@
         private System.Windows.Forms.Label labelLastName;
         private System.Windows.Forms.CheckBox checkBoxLangFr;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBoxAge;
+        private System.Windows.Forms.Label labelAge;
     }
 }
 

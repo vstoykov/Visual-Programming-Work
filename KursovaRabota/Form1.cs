@@ -16,5 +16,14 @@ namespace KursovaRabota
             InitializeComponent();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string output, fullname;
+            fullname = textBoxFirstName.Text + " " + textBoxSurName.Text + " " + textBoxLastName.Text;
+            output = "Информация за служителя:\r\n";
+            output += "  Име: " + fullname + "\r\n";
+            MessageBox.Show(output, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
     }
 }
