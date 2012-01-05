@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Венелин",
             "Красимиров",
             "Стойков",
@@ -82,7 +82,7 @@
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(71, 3);
+            this.textBoxFirstName.Location = new System.Drawing.Point(72, 27);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(200, 20);
             this.textBoxFirstName.TabIndex = 0;
@@ -90,7 +90,7 @@
             // 
             // textBoxSurName
             // 
-            this.textBoxSurName.Location = new System.Drawing.Point(71, 29);
+            this.textBoxSurName.Location = new System.Drawing.Point(72, 54);
             this.textBoxSurName.Name = "textBoxSurName";
             this.textBoxSurName.Size = new System.Drawing.Size(200, 20);
             this.textBoxSurName.TabIndex = 1;
@@ -98,7 +98,7 @@
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(71, 55);
+            this.textBoxLastName.Location = new System.Drawing.Point(72, 80);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(200, 20);
             this.textBoxLastName.TabIndex = 2;
@@ -108,7 +108,7 @@
             // 
             this.groupBoxSex.Controls.Add(this.radioButtonFemale);
             this.groupBoxSex.Controls.Add(this.radioButtonMale);
-            this.groupBoxSex.Location = new System.Drawing.Point(71, 81);
+            this.groupBoxSex.Location = new System.Drawing.Point(72, 106);
             this.groupBoxSex.Name = "groupBoxSex";
             this.groupBoxSex.Size = new System.Drawing.Size(200, 79);
             this.groupBoxSex.TabIndex = 3;
@@ -141,14 +141,16 @@
             // 
             // groupBoxEducation
             // 
+            this.groupBoxEducation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxEducation.Controls.Add(this.radioButtonEducation5);
             this.groupBoxEducation.Controls.Add(this.radioButtonEducation4);
             this.groupBoxEducation.Controls.Add(this.radioButtonEducation3);
             this.groupBoxEducation.Controls.Add(this.radioButtonEducation2);
             this.groupBoxEducation.Controls.Add(this.radioButtonEducation1);
-            this.groupBoxEducation.Location = new System.Drawing.Point(71, 166);
+            this.groupBoxEducation.Location = new System.Drawing.Point(290, 27);
             this.groupBoxEducation.Name = "groupBoxEducation";
-            this.groupBoxEducation.Size = new System.Drawing.Size(200, 139);
+            this.groupBoxEducation.Size = new System.Drawing.Size(223, 139);
             this.groupBoxEducation.TabIndex = 4;
             this.groupBoxEducation.TabStop = false;
             this.groupBoxEducation.Text = "Образование";
@@ -215,11 +217,13 @@
             // 
             // groupBoxLanguages
             // 
+            this.groupBoxLanguages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxLanguages.Controls.Add(this.checkBoxLangFr);
             this.groupBoxLanguages.Controls.Add(this.checkBoxLangRu);
             this.groupBoxLanguages.Controls.Add(this.checkBoxLangDe);
             this.groupBoxLanguages.Controls.Add(this.checkBoxLangEn);
-            this.groupBoxLanguages.Location = new System.Drawing.Point(289, 10);
+            this.groupBoxLanguages.Location = new System.Drawing.Point(290, 172);
             this.groupBoxLanguages.Name = "groupBoxLanguages";
             this.groupBoxLanguages.Size = new System.Drawing.Size(223, 120);
             this.groupBoxLanguages.TabIndex = 5;
@@ -268,8 +272,10 @@
             // 
             // labelFirstName
             // 
+            this.labelFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelFirstName.AutoSize = true;
-            this.labelFirstName.Location = new System.Drawing.Point(36, 6);
+            this.labelFirstName.Location = new System.Drawing.Point(37, 31);
             this.labelFirstName.Name = "labelFirstName";
             this.labelFirstName.Size = new System.Drawing.Size(29, 13);
             this.labelFirstName.TabIndex = 6;
@@ -277,8 +283,10 @@
             // 
             // labelSurName
             // 
+            this.labelSurName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelSurName.AutoSize = true;
-            this.labelSurName.Location = new System.Drawing.Point(12, 32);
+            this.labelSurName.Location = new System.Drawing.Point(13, 57);
             this.labelSurName.Name = "labelSurName";
             this.labelSurName.Size = new System.Drawing.Size(53, 13);
             this.labelSurName.TabIndex = 7;
@@ -286,8 +294,10 @@
             // 
             // labelLastName
             // 
+            this.labelLastName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelLastName.AutoSize = true;
-            this.labelLastName.Location = new System.Drawing.Point(9, 58);
+            this.labelLastName.Location = new System.Drawing.Point(10, 83);
             this.labelLastName.Name = "labelLastName";
             this.labelLastName.Size = new System.Drawing.Size(56, 13);
             this.labelLastName.TabIndex = 8;
@@ -295,7 +305,8 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(450, 277);
+            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAdd.Location = new System.Drawing.Point(523, 287);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 9;
@@ -305,7 +316,7 @@
             // 
             // textBoxAge
             // 
-            this.textBoxAge.Location = new System.Drawing.Point(342, 166);
+            this.textBoxAge.Location = new System.Drawing.Point(72, 204);
             this.textBoxAge.Name = "textBoxAge";
             this.textBoxAge.Size = new System.Drawing.Size(100, 20);
             this.textBoxAge.TabIndex = 10;
@@ -315,8 +326,10 @@
             // 
             // labelAge
             // 
+            this.labelAge.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelAge.AutoSize = true;
-            this.labelAge.Location = new System.Drawing.Point(286, 166);
+            this.labelAge.Location = new System.Drawing.Point(16, 208);
             this.labelAge.Name = "labelAge";
             this.labelAge.Size = new System.Drawing.Size(50, 13);
             this.labelAge.TabIndex = 11;
@@ -327,10 +340,11 @@
             this.tabControlWorkers.Controls.Add(this.tabPageAdd);
             this.tabControlWorkers.Controls.Add(this.tabPageView);
             this.tabControlWorkers.Controls.Add(this.tabPageSearch);
-            this.tabControlWorkers.Location = new System.Drawing.Point(0, 2);
+            this.tabControlWorkers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlWorkers.Location = new System.Drawing.Point(0, 0);
             this.tabControlWorkers.Name = "tabControlWorkers";
             this.tabControlWorkers.SelectedIndex = 0;
-            this.tabControlWorkers.Size = new System.Drawing.Size(645, 334);
+            this.tabControlWorkers.Size = new System.Drawing.Size(614, 342);
             this.tabControlWorkers.TabIndex = 12;
             // 
             // tabPageAdd
@@ -350,7 +364,7 @@
             this.tabPageAdd.Location = new System.Drawing.Point(4, 22);
             this.tabPageAdd.Name = "tabPageAdd";
             this.tabPageAdd.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAdd.Size = new System.Drawing.Size(637, 308);
+            this.tabPageAdd.Size = new System.Drawing.Size(606, 316);
             this.tabPageAdd.TabIndex = 0;
             this.tabPageAdd.Text = "Добави";
             this.tabPageAdd.UseVisualStyleBackColor = true;
@@ -362,14 +376,15 @@
             this.tabPageView.Location = new System.Drawing.Point(4, 22);
             this.tabPageView.Name = "tabPageView";
             this.tabPageView.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageView.Size = new System.Drawing.Size(637, 308);
+            this.tabPageView.Size = new System.Drawing.Size(606, 316);
             this.tabPageView.TabIndex = 1;
             this.tabPageView.Text = "Прегледай";
             this.tabPageView.UseVisualStyleBackColor = true;
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(450, 282);
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSave.Location = new System.Drawing.Point(525, 285);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 1;
@@ -378,6 +393,9 @@
             // 
             // listViewWorkers
             // 
+            this.listViewWorkers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewWorkers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnFirstName,
             this.columnSurname,
@@ -387,10 +405,10 @@
             this.columnEducation,
             this.columnLanguages});
             this.listViewWorkers.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
+            listViewItem1});
             this.listViewWorkers.Location = new System.Drawing.Point(3, 0);
             this.listViewWorkers.Name = "listViewWorkers";
-            this.listViewWorkers.Size = new System.Drawing.Size(628, 236);
+            this.listViewWorkers.Size = new System.Drawing.Size(600, 279);
             this.listViewWorkers.TabIndex = 0;
             this.listViewWorkers.UseCompatibleStateImageBehavior = false;
             this.listViewWorkers.View = System.Windows.Forms.View.Details;
@@ -398,6 +416,7 @@
             // columnFirstName
             // 
             this.columnFirstName.Text = "Име";
+            this.columnFirstName.Width = 82;
             // 
             // columnSurname
             // 
@@ -407,22 +426,21 @@
             // columnLastName
             // 
             this.columnLastName.Text = "Фамилия";
-            this.columnLastName.Width = 77;
+            this.columnLastName.Width = 89;
             // 
             // columnSex
             // 
             this.columnSex.Text = "Пол";
-            this.columnSex.Width = 74;
+            this.columnSex.Width = 54;
             // 
             // columnAge
             // 
             this.columnAge.Text = "Възраст";
-            this.columnAge.Width = 78;
             // 
             // columnEducation
             // 
             this.columnEducation.Text = "Образование";
-            this.columnEducation.Width = 85;
+            this.columnEducation.Width = 80;
             // 
             // columnLanguages
             // 
@@ -443,8 +461,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 336);
+            this.ClientSize = new System.Drawing.Size(614, 342);
             this.Controls.Add(this.tabControlWorkers);
+            this.MinimumSize = new System.Drawing.Size(630, 380);
             this.Name = "Form1";
             this.Text = "Фирмени Работници";
             this.groupBoxSex.ResumeLayout(false);
