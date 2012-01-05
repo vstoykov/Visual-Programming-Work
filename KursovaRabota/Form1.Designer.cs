@@ -28,6 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Венелин",
+            "Красимиров",
+            "Стойков",
+            "М",
+            "24",
+            "Магистър",
+            "Английски"}, -1);
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.textBoxSurName = new System.Windows.Forms.TextBox();
             this.textBoxLastName = new System.Windows.Forms.TextBox();
@@ -41,47 +49,66 @@
             this.radioButtonEducation2 = new System.Windows.Forms.RadioButton();
             this.radioButtonEducation1 = new System.Windows.Forms.RadioButton();
             this.groupBoxLanguages = new System.Windows.Forms.GroupBox();
+            this.checkBoxLangFr = new System.Windows.Forms.CheckBox();
             this.checkBoxLangRu = new System.Windows.Forms.CheckBox();
             this.checkBoxLangDe = new System.Windows.Forms.CheckBox();
             this.checkBoxLangEn = new System.Windows.Forms.CheckBox();
             this.labelFirstName = new System.Windows.Forms.Label();
             this.labelSurName = new System.Windows.Forms.Label();
             this.labelLastName = new System.Windows.Forms.Label();
-            this.checkBoxLangFr = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.textBoxAge = new System.Windows.Forms.TextBox();
             this.labelAge = new System.Windows.Forms.Label();
+            this.tabControlWorkers = new System.Windows.Forms.TabControl();
+            this.tabPageAdd = new System.Windows.Forms.TabPage();
+            this.tabPageView = new System.Windows.Forms.TabPage();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.listViewWorkers = new System.Windows.Forms.ListView();
+            this.columnFirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnSex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnAge = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnEducation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnLanguages = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPageSearch = new System.Windows.Forms.TabPage();
             this.groupBoxSex.SuspendLayout();
             this.groupBoxEducation.SuspendLayout();
             this.groupBoxLanguages.SuspendLayout();
+            this.tabControlWorkers.SuspendLayout();
+            this.tabPageAdd.SuspendLayout();
+            this.tabPageView.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(95, 16);
+            this.textBoxFirstName.Location = new System.Drawing.Point(71, 3);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(200, 20);
             this.textBoxFirstName.TabIndex = 0;
+            this.textBoxFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxEmpty_Validating);
             // 
             // textBoxSurName
             // 
-            this.textBoxSurName.Location = new System.Drawing.Point(95, 42);
+            this.textBoxSurName.Location = new System.Drawing.Point(71, 29);
             this.textBoxSurName.Name = "textBoxSurName";
             this.textBoxSurName.Size = new System.Drawing.Size(200, 20);
             this.textBoxSurName.TabIndex = 1;
+            this.textBoxSurName.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxEmpty_Validating);
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(95, 68);
+            this.textBoxLastName.Location = new System.Drawing.Point(71, 55);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(200, 20);
             this.textBoxLastName.TabIndex = 2;
+            this.textBoxLastName.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxEmpty_Validating);
             // 
             // groupBoxSex
             // 
             this.groupBoxSex.Controls.Add(this.radioButtonFemale);
             this.groupBoxSex.Controls.Add(this.radioButtonMale);
-            this.groupBoxSex.Location = new System.Drawing.Point(95, 95);
+            this.groupBoxSex.Location = new System.Drawing.Point(71, 81);
             this.groupBoxSex.Name = "groupBoxSex";
             this.groupBoxSex.Size = new System.Drawing.Size(200, 79);
             this.groupBoxSex.TabIndex = 3;
@@ -98,6 +125,7 @@
             this.radioButtonFemale.TabStop = true;
             this.radioButtonFemale.Text = "Жена";
             this.radioButtonFemale.UseVisualStyleBackColor = true;
+            this.radioButtonFemale.CheckedChanged += new System.EventHandler(this.radioButtonSex_CheckedChanged);
             // 
             // radioButtonMale
             // 
@@ -109,6 +137,7 @@
             this.radioButtonMale.TabStop = true;
             this.radioButtonMale.Text = "Мъж";
             this.radioButtonMale.UseVisualStyleBackColor = true;
+            this.radioButtonMale.CheckedChanged += new System.EventHandler(this.radioButtonSex_CheckedChanged);
             // 
             // groupBoxEducation
             // 
@@ -117,9 +146,9 @@
             this.groupBoxEducation.Controls.Add(this.radioButtonEducation3);
             this.groupBoxEducation.Controls.Add(this.radioButtonEducation2);
             this.groupBoxEducation.Controls.Add(this.radioButtonEducation1);
-            this.groupBoxEducation.Location = new System.Drawing.Point(95, 183);
+            this.groupBoxEducation.Location = new System.Drawing.Point(71, 166);
             this.groupBoxEducation.Name = "groupBoxEducation";
-            this.groupBoxEducation.Size = new System.Drawing.Size(199, 144);
+            this.groupBoxEducation.Size = new System.Drawing.Size(200, 139);
             this.groupBoxEducation.TabIndex = 4;
             this.groupBoxEducation.TabStop = false;
             this.groupBoxEducation.Text = "Образование";
@@ -134,6 +163,7 @@
             this.radioButtonEducation5.TabStop = true;
             this.radioButtonEducation5.Text = "Висше Магистър";
             this.radioButtonEducation5.UseVisualStyleBackColor = true;
+            this.radioButtonEducation5.CheckedChanged += new System.EventHandler(this.radioButtonEducation_CheckedChanged);
             // 
             // radioButtonEducation4
             // 
@@ -145,6 +175,7 @@
             this.radioButtonEducation4.TabStop = true;
             this.radioButtonEducation4.Text = "Висше Бакалавър";
             this.radioButtonEducation4.UseVisualStyleBackColor = true;
+            this.radioButtonEducation4.CheckedChanged += new System.EventHandler(this.radioButtonEducation_CheckedChanged);
             // 
             // radioButtonEducation3
             // 
@@ -156,6 +187,7 @@
             this.radioButtonEducation3.TabStop = true;
             this.radioButtonEducation3.Text = "Средно";
             this.radioButtonEducation3.UseVisualStyleBackColor = true;
+            this.radioButtonEducation3.CheckedChanged += new System.EventHandler(this.radioButtonEducation_CheckedChanged);
             // 
             // radioButtonEducation2
             // 
@@ -167,6 +199,7 @@
             this.radioButtonEducation2.TabStop = true;
             this.radioButtonEducation2.Text = "Основно";
             this.radioButtonEducation2.UseVisualStyleBackColor = true;
+            this.radioButtonEducation2.CheckedChanged += new System.EventHandler(this.radioButtonEducation_CheckedChanged);
             // 
             // radioButtonEducation1
             // 
@@ -178,6 +211,7 @@
             this.radioButtonEducation1.TabStop = true;
             this.radioButtonEducation1.Text = "Начално";
             this.radioButtonEducation1.UseVisualStyleBackColor = true;
+            this.radioButtonEducation1.CheckedChanged += new System.EventHandler(this.radioButtonEducation_CheckedChanged);
             // 
             // groupBoxLanguages
             // 
@@ -185,12 +219,22 @@
             this.groupBoxLanguages.Controls.Add(this.checkBoxLangRu);
             this.groupBoxLanguages.Controls.Add(this.checkBoxLangDe);
             this.groupBoxLanguages.Controls.Add(this.checkBoxLangEn);
-            this.groupBoxLanguages.Location = new System.Drawing.Point(301, 12);
+            this.groupBoxLanguages.Location = new System.Drawing.Point(289, 10);
             this.groupBoxLanguages.Name = "groupBoxLanguages";
             this.groupBoxLanguages.Size = new System.Drawing.Size(223, 120);
             this.groupBoxLanguages.TabIndex = 5;
             this.groupBoxLanguages.TabStop = false;
             this.groupBoxLanguages.Text = "Чужди Езици";
+            // 
+            // checkBoxLangFr
+            // 
+            this.checkBoxLangFr.AutoSize = true;
+            this.checkBoxLangFr.Location = new System.Drawing.Point(7, 92);
+            this.checkBoxLangFr.Name = "checkBoxLangFr";
+            this.checkBoxLangFr.Size = new System.Drawing.Size(73, 17);
+            this.checkBoxLangFr.TabIndex = 3;
+            this.checkBoxLangFr.Text = "Френски";
+            this.checkBoxLangFr.UseVisualStyleBackColor = true;
             // 
             // checkBoxLangRu
             // 
@@ -225,7 +269,7 @@
             // labelFirstName
             // 
             this.labelFirstName.AutoSize = true;
-            this.labelFirstName.Location = new System.Drawing.Point(60, 19);
+            this.labelFirstName.Location = new System.Drawing.Point(36, 6);
             this.labelFirstName.Name = "labelFirstName";
             this.labelFirstName.Size = new System.Drawing.Size(29, 13);
             this.labelFirstName.TabIndex = 6;
@@ -234,7 +278,7 @@
             // labelSurName
             // 
             this.labelSurName.AutoSize = true;
-            this.labelSurName.Location = new System.Drawing.Point(36, 45);
+            this.labelSurName.Location = new System.Drawing.Point(12, 32);
             this.labelSurName.Name = "labelSurName";
             this.labelSurName.Size = new System.Drawing.Size(53, 13);
             this.labelSurName.TabIndex = 7;
@@ -243,65 +287,164 @@
             // labelLastName
             // 
             this.labelLastName.AutoSize = true;
-            this.labelLastName.Location = new System.Drawing.Point(33, 71);
+            this.labelLastName.Location = new System.Drawing.Point(9, 58);
             this.labelLastName.Name = "labelLastName";
             this.labelLastName.Size = new System.Drawing.Size(56, 13);
             this.labelLastName.TabIndex = 8;
             this.labelLastName.Text = "Фамилия";
             // 
-            // checkBoxLangFr
+            // buttonAdd
             // 
-            this.checkBoxLangFr.AutoSize = true;
-            this.checkBoxLangFr.Location = new System.Drawing.Point(7, 92);
-            this.checkBoxLangFr.Name = "checkBoxLangFr";
-            this.checkBoxLangFr.Size = new System.Drawing.Size(73, 17);
-            this.checkBoxLangFr.TabIndex = 3;
-            this.checkBoxLangFr.Text = "Френски";
-            this.checkBoxLangFr.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(453, 304);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAdd.Location = new System.Drawing.Point(450, 277);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdd.TabIndex = 9;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // textBoxAge
             // 
-            this.textBoxAge.Location = new System.Drawing.Point(358, 153);
+            this.textBoxAge.Location = new System.Drawing.Point(342, 166);
             this.textBoxAge.Name = "textBoxAge";
             this.textBoxAge.Size = new System.Drawing.Size(100, 20);
             this.textBoxAge.TabIndex = 10;
+            this.textBoxAge.TextChanged += new System.EventHandler(this.textBox_TextChanged);
+            this.textBoxAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAge_KeyPress);
+            this.textBoxAge.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxEmpty_Validating);
             // 
             // labelAge
             // 
             this.labelAge.AutoSize = true;
-            this.labelAge.Location = new System.Drawing.Point(302, 153);
+            this.labelAge.Location = new System.Drawing.Point(286, 166);
             this.labelAge.Name = "labelAge";
             this.labelAge.Size = new System.Drawing.Size(50, 13);
             this.labelAge.TabIndex = 11;
             this.labelAge.Text = "Възраст";
             // 
+            // tabControlWorkers
+            // 
+            this.tabControlWorkers.Controls.Add(this.tabPageAdd);
+            this.tabControlWorkers.Controls.Add(this.tabPageView);
+            this.tabControlWorkers.Controls.Add(this.tabPageSearch);
+            this.tabControlWorkers.Location = new System.Drawing.Point(0, 2);
+            this.tabControlWorkers.Name = "tabControlWorkers";
+            this.tabControlWorkers.SelectedIndex = 0;
+            this.tabControlWorkers.Size = new System.Drawing.Size(645, 334);
+            this.tabControlWorkers.TabIndex = 12;
+            // 
+            // tabPageAdd
+            // 
+            this.tabPageAdd.Controls.Add(this.buttonAdd);
+            this.tabPageAdd.Controls.Add(this.groupBoxEducation);
+            this.tabPageAdd.Controls.Add(this.textBoxAge);
+            this.tabPageAdd.Controls.Add(this.labelAge);
+            this.tabPageAdd.Controls.Add(this.textBoxFirstName);
+            this.tabPageAdd.Controls.Add(this.textBoxSurName);
+            this.tabPageAdd.Controls.Add(this.textBoxLastName);
+            this.tabPageAdd.Controls.Add(this.groupBoxSex);
+            this.tabPageAdd.Controls.Add(this.groupBoxLanguages);
+            this.tabPageAdd.Controls.Add(this.labelLastName);
+            this.tabPageAdd.Controls.Add(this.labelFirstName);
+            this.tabPageAdd.Controls.Add(this.labelSurName);
+            this.tabPageAdd.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAdd.Name = "tabPageAdd";
+            this.tabPageAdd.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAdd.Size = new System.Drawing.Size(637, 308);
+            this.tabPageAdd.TabIndex = 0;
+            this.tabPageAdd.Text = "Добави";
+            this.tabPageAdd.UseVisualStyleBackColor = true;
+            // 
+            // tabPageView
+            // 
+            this.tabPageView.Controls.Add(this.buttonSave);
+            this.tabPageView.Controls.Add(this.listViewWorkers);
+            this.tabPageView.Location = new System.Drawing.Point(4, 22);
+            this.tabPageView.Name = "tabPageView";
+            this.tabPageView.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageView.Size = new System.Drawing.Size(637, 308);
+            this.tabPageView.TabIndex = 1;
+            this.tabPageView.Text = "Прегледай";
+            this.tabPageView.UseVisualStyleBackColor = true;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(450, 282);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 1;
+            this.buttonSave.Text = "Запази";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            // 
+            // listViewWorkers
+            // 
+            this.listViewWorkers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnFirstName,
+            this.columnSurname,
+            this.columnLastName,
+            this.columnSex,
+            this.columnAge,
+            this.columnEducation,
+            this.columnLanguages});
+            this.listViewWorkers.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem3});
+            this.listViewWorkers.Location = new System.Drawing.Point(3, 0);
+            this.listViewWorkers.Name = "listViewWorkers";
+            this.listViewWorkers.Size = new System.Drawing.Size(628, 236);
+            this.listViewWorkers.TabIndex = 0;
+            this.listViewWorkers.UseCompatibleStateImageBehavior = false;
+            this.listViewWorkers.View = System.Windows.Forms.View.Details;
+            // 
+            // columnFirstName
+            // 
+            this.columnFirstName.Text = "Име";
+            // 
+            // columnSurname
+            // 
+            this.columnSurname.Text = "Презиме";
+            this.columnSurname.Width = 96;
+            // 
+            // columnLastName
+            // 
+            this.columnLastName.Text = "Фамилия";
+            this.columnLastName.Width = 77;
+            // 
+            // columnSex
+            // 
+            this.columnSex.Text = "Пол";
+            this.columnSex.Width = 74;
+            // 
+            // columnAge
+            // 
+            this.columnAge.Text = "Възраст";
+            this.columnAge.Width = 78;
+            // 
+            // columnEducation
+            // 
+            this.columnEducation.Text = "Образование";
+            this.columnEducation.Width = 85;
+            // 
+            // columnLanguages
+            // 
+            this.columnLanguages.Text = "Езици";
+            this.columnLanguages.Width = 128;
+            // 
+            // tabPageSearch
+            // 
+            this.tabPageSearch.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSearch.Name = "tabPageSearch";
+            this.tabPageSearch.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSearch.Size = new System.Drawing.Size(637, 308);
+            this.tabPageSearch.TabIndex = 2;
+            this.tabPageSearch.Text = "Търси";
+            this.tabPageSearch.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 336);
-            this.Controls.Add(this.labelAge);
-            this.Controls.Add(this.textBoxAge);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.labelLastName);
-            this.Controls.Add(this.labelSurName);
-            this.Controls.Add(this.labelFirstName);
-            this.Controls.Add(this.groupBoxLanguages);
-            this.Controls.Add(this.groupBoxEducation);
-            this.Controls.Add(this.groupBoxSex);
-            this.Controls.Add(this.textBoxLastName);
-            this.Controls.Add(this.textBoxSurName);
-            this.Controls.Add(this.textBoxFirstName);
+            this.ClientSize = new System.Drawing.Size(647, 336);
+            this.Controls.Add(this.tabControlWorkers);
             this.Name = "Form1";
             this.Text = "Фирмени Работници";
             this.groupBoxSex.ResumeLayout(false);
@@ -310,8 +453,11 @@
             this.groupBoxEducation.PerformLayout();
             this.groupBoxLanguages.ResumeLayout(false);
             this.groupBoxLanguages.PerformLayout();
+            this.tabControlWorkers.ResumeLayout(false);
+            this.tabPageAdd.ResumeLayout(false);
+            this.tabPageAdd.PerformLayout();
+            this.tabPageView.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -337,9 +483,22 @@
         private System.Windows.Forms.Label labelSurName;
         private System.Windows.Forms.Label labelLastName;
         private System.Windows.Forms.CheckBox checkBoxLangFr;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.TextBox textBoxAge;
         private System.Windows.Forms.Label labelAge;
+        private System.Windows.Forms.TabControl tabControlWorkers;
+        private System.Windows.Forms.TabPage tabPageAdd;
+        private System.Windows.Forms.TabPage tabPageView;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.ListView listViewWorkers;
+        private System.Windows.Forms.ColumnHeader columnFirstName;
+        private System.Windows.Forms.ColumnHeader columnSurname;
+        private System.Windows.Forms.ColumnHeader columnLastName;
+        private System.Windows.Forms.ColumnHeader columnEducation;
+        private System.Windows.Forms.ColumnHeader columnSex;
+        private System.Windows.Forms.ColumnHeader columnAge;
+        private System.Windows.Forms.ColumnHeader columnLanguages;
+        private System.Windows.Forms.TabPage tabPageSearch;
     }
 }
 
