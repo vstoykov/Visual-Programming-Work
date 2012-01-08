@@ -37,15 +37,6 @@
             "24",
             "Магистър",
             "Английски"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-            "1",
-            "Венелин",
-            "Красимиров",
-            "Стойков",
-            "М",
-            "24",
-            "Магистър",
-            "Английски"}, -1);
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.textBoxSurName = new System.Windows.Forms.TextBox();
             this.textBoxLastName = new System.Windows.Forms.TextBox();
@@ -579,8 +570,6 @@
             this.columnHeader8});
             this.listViewSearchResults.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewSearchResults.FullRowSelect = true;
-            this.listViewSearchResults.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
             this.listViewSearchResults.Location = new System.Drawing.Point(0, 0);
             this.listViewSearchResults.Name = "listViewSearchResults";
             this.listViewSearchResults.ShowGroups = false;

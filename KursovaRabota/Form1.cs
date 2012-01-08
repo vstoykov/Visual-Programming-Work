@@ -260,34 +260,34 @@ namespace KursovaRabota
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            string[] search_items = new string[]{
-                this.textBoxSearchName.Text,
-                this.comboBoxSearchSex.Text,
-                this.comboBoxSearchEducation.Text,
-            };
+            string sname = "", name = this.textBoxSearchName.Text;
+            string ssex = "", sex = this.comboBoxSearchSex.Text;
+            string seducation = "", education = this.comboBoxSearchEducation.Text;
 
-            ListViewItem lvi = null;
-            int startindex;
-
+            int counter;
+            
             this.listViewSearchResults.Items.Clear();
 
-            foreach (string search in search_items)
+            foreach (ListViewItem lvi in this.listViewWorkers.Items)
             {
-                if (search != "")
+                counter = 0;
+                sname = "";
+                foreach (ListViewItem.ListViewSubItem lvsi in lvi.SubItems)
                 {
-                    do
-                    {
-                        startindex = (lvi == null) ? 0 : this.listViewWorkers.Items.IndexOf(lvi) + 1;
-                        if (startindex < this.listViewWorkers.Items.Count)
-                            lvi = this.listViewWorkers.FindItemWithText(search, true, startindex);
-                        else
-                            lvi = null;
-
-                        if (lvi != null)
-                        {
-                            this.listViewSearchResults.Items.Add((ListViewItem)lvi.Clone());
-                        }
-                    } while (lvi != null);
+                    if ((new int[] { 1, 2, 3 }).Contains(counter))
+                        sname += lvsi.Text + " ";
+                    else if (counter == 4)
+                        ssex = lvsi.Text;
+                    else if (counter == 6)
+                        seducation = lvsi.Text;
+                    counter++;
+                }
+                ;
+                if ((name == "" || sname.ToLower().Contains(name.ToLower())) &&
+                    (sex == "" || sex.ToLower() == ssex.ToLower()) &&
+                    (education == "" || education.ToLower() == seducation.ToLower()))
+                {
+                    this.listViewSearchResults.Items.Add((ListViewItem)lvi.Clone());
                 }
             }
 
