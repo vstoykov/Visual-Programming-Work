@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            "1",
             "Венелин",
             "Красимиров",
             "Стойков",
@@ -72,6 +73,7 @@
             this.columnEducation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnLanguages = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageSearch = new System.Windows.Forms.TabPage();
+            this.columnID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBoxSex.SuspendLayout();
             this.groupBoxEducation.SuspendLayout();
             this.groupBoxLanguages.SuspendLayout();
@@ -390,6 +392,7 @@
             this.buttonSave.TabIndex = 1;
             this.buttonSave.Text = "Запази";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // listViewWorkers
             // 
@@ -397,6 +400,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewWorkers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnID,
             this.columnFirstName,
             this.columnSurname,
             this.columnLastName,
@@ -405,8 +409,8 @@
             this.columnEducation,
             this.columnLanguages});
             this.listViewWorkers.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listViewWorkers.Location = new System.Drawing.Point(3, 0);
+            listViewItem4});
+            this.listViewWorkers.Location = new System.Drawing.Point(3, 3);
             this.listViewWorkers.Name = "listViewWorkers";
             this.listViewWorkers.Size = new System.Drawing.Size(600, 279);
             this.listViewWorkers.TabIndex = 0;
@@ -456,6 +460,11 @@
             this.tabPageSearch.TabIndex = 2;
             this.tabPageSearch.Text = "Търси";
             this.tabPageSearch.UseVisualStyleBackColor = true;
+            // 
+            // columnID
+            // 
+            this.columnID.Text = "ID";
+            this.columnID.Width = 30;
             // 
             // Form1
             // 
@@ -518,6 +527,7 @@
         private System.Windows.Forms.ColumnHeader columnAge;
         private System.Windows.Forms.ColumnHeader columnLanguages;
         private System.Windows.Forms.TabPage tabPageSearch;
+        private System.Windows.Forms.ColumnHeader columnID;
     }
 }
 

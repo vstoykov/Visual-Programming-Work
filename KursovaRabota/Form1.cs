@@ -16,25 +16,34 @@ namespace KursovaRabota
             InitializeComponent();
             this.buttonAdd.Enabled = false;
 
-            // Make all tags invalid
+            // Прави всички елементи невалидни
             this.textBoxFirstName.Tag = false;
             this.textBoxSurName.Tag = false;
             this.textBoxLastName.Tag = false;
             this.textBoxAge.Tag = false;
             this.groupBoxSex.Tag = false;
             this.groupBoxEducation.Tag = false;
+
+            this.LoadWorkersFromFile("D:\\test.ini");
         }
+
+        
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            this.addNewWorker();
+            string[] items = new string[]{
+                                 textBoxFirstName.Text,
+                                 textBoxSurName.Text,
+                                 textBoxLastName.Text,
+                                 this.addFormGetSex(),
+                                 textBoxAge.Text,
+                                 this.addFormGetEducation(),
+                                 string.Join(", ", this.addFormGetLanguages())
+                             };
 
-            string output, fullname;
-            fullname = textBoxFirstName.Text + " " + textBoxSurName.Text + " " + textBoxLastName.Text;
-            output = "Информация за служителя:\r\n";
-            output += "  Име: " + fullname + "\r\n";
-            MessageBox.Show(output, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+            this.addNewWorker(items);
+            this.clearAddForm();
+            MessageBox.Show("Служителят е добавен", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private string addFormGetSex()
@@ -65,6 +74,7 @@ namespace KursovaRabota
 
         private List<string> addFormGetLanguages()
         {
+            // Връща списък от избраните езици
             List<string> languages = new List<string>();
 
             if (this.checkBoxLangEn.Checked)
@@ -79,25 +89,6 @@ namespace KursovaRabota
             return languages;
         }
 
-        private string  addFormGetLanguagesText()
-        {
-            StringBuilder builder = new StringBuilder();
-            string delimiter = "";
-            foreach (string item in this.addFormGetLanguages())
-            {
-                builder.Append(delimiter);
-                builder.Append(item);
-                delimiter = ", ";
-            }
-            return builder.ToString();
-        }
-
-
-        private void validateAddForm()
-        {
-            if (textBoxFirstName.Text != "")
-                textBoxFirstName.Tag = true;
-        }
 
         private bool ValidateOk()
         {
@@ -114,43 +105,54 @@ namespace KursovaRabota
             return this.buttonAdd.Enabled;
         }
 
-        private void addNewWorker()
+        private void addNewWorker(string[] items)
         {
             // Прехвърля записите от полтата в listViewWorkers
 
             ListViewItem lvi;
             ListViewItem.ListViewSubItem lvsi;
-
+         
             lvi = new ListViewItem();
-            lvi.Text = textBoxFirstName.Text;
+            // TODO: Оптимизиране на генерирането на новото ID
+            lvi.Text = (this.listViewWorkers.Items.Count + 1).ToString();
 
-            lvsi = new ListViewItem.ListViewSubItem();
-            lvsi.Text = textBoxSurName.Text;
-            lvi.SubItems.Add(lvsi);
-
-            lvsi = new ListViewItem.ListViewSubItem();
-            lvsi.Text = textBoxLastName.Text;
-            lvi.SubItems.Add(lvsi);
-
-            lvsi = new ListViewItem.ListViewSubItem();
-            lvsi.Text = this.addFormGetSex();
-            lvi.SubItems.Add(lvsi);
-
-            lvsi = new ListViewItem.ListViewSubItem();
-            lvsi.Text = textBoxAge.Text;
-            lvi.SubItems.Add(lvsi);
-
-            lvsi = new ListViewItem.ListViewSubItem();
-            lvsi.Text = this.addFormGetEducation();
-            lvi.SubItems.Add(lvsi);
-
-            lvsi = new ListViewItem.ListViewSubItem();
-            lvsi.Text = this.addFormGetLanguagesText();
-            lvi.SubItems.Add(lvsi);
+            foreach (string item in items)
+            {
+                lvsi = new ListViewItem.ListViewSubItem();
+                lvsi.Text = item;
+                lvi.SubItems.Add(lvsi);
+            }
 
             this.listViewWorkers.Items.Add(lvi);
         }
 
+        private void clearAddForm()
+        {
+            this.textBoxFirstName.Text = "";
+            this.textBoxSurName.Text = "";
+            this.textBoxLastName.Text = "";
+            this.textBoxAge.Text = "";
+
+            this.radioButtonMale.Checked = false;
+            this.radioButtonFemale.Checked = false;
+
+            this.radioButtonEducation1.Checked = false;
+            this.radioButtonEducation2.Checked = false;
+            this.radioButtonEducation3.Checked = false;
+            this.radioButtonEducation4.Checked = false;
+            this.radioButtonEducation5.Checked = false;
+
+            this.checkBoxLangEn.Checked = false;
+            this.checkBoxLangDe.Checked = false;
+            this.checkBoxLangRu.Checked = false;
+            this.checkBoxLangFr.Checked = false;
+
+            this.textBoxAge.BackColor = System.Drawing.SystemColors.Window;
+
+        }
+
+
+        // Методи използвани за валидиране на формата
 
         private void textBoxAge_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -193,6 +195,52 @@ namespace KursovaRabota
         {
             this.groupBoxEducation.Tag = (this.addFormGetEducation() != "N/A");
             this.ValidateOk();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            this.SaveWorkersToFile("D:\\test.ini");
+        }
+
+
+        // Методи за записване в и зареждане от файл на информацията в listViewWorkers
+
+        private void SaveWorkersToFile(string filename)
+        {
+            IniFile ini = new IniFile(filename);
+            int items_counter = 0, subitems_counter;
+            ini.IniWriteValue("meta", "number_of_items", "0");
+            foreach (ListViewItem lvi in this.listViewWorkers.Items)
+            {
+                subitems_counter = 0;
+                foreach (ListViewItem.ListViewSubItem lvsi in lvi.SubItems)
+                {
+                    if (subitems_counter == 0 && lvi.Text.Equals(lvsi.Text))
+                        continue;
+                    ini.IniWriteValue(items_counter.ToString(), subitems_counter.ToString(), lvsi.Text);
+                    subitems_counter++;
+                }
+                items_counter++;
+            }
+            ini.IniWriteValue("meta", "number_of_items", items_counter.ToString());
+        }
+
+        private void LoadWorkersFromFile(string filename)
+        {
+            this.listViewWorkers.Items.Clear();
+
+            IniFile ini = new IniFile(filename);
+            int number_items = int.Parse(ini.IniReadValue("meta", "number_of_items"));
+            List<string> items;
+            for (int i = 0; i < number_items; i++)
+            {
+                items = new List<string>();
+                for (int si = 0; si < 7; si++)
+                {
+                    items.Add(ini.IniReadValue(i.ToString(), si.ToString()));
+                }
+                this.addNewWorker(items.ToArray());
+            }
         }
 
     }
