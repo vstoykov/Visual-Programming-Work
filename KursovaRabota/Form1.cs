@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KursovaRabota
 {
@@ -24,10 +25,13 @@ namespace KursovaRabota
             this.groupBoxSex.Tag = false;
             this.groupBoxEducation.Tag = false;
 
-            this.LoadWorkersFromFile("D:\\test.ini");
+            // Задаване на новото местоположение на файла с данни
+            this.data_file = Directory.GetCurrentDirectory() + "\\" + this.data_file;
+            // Зареждане на стойностите от файла в listViewWorkers
+            this.LoadWorkersFromFile();
         }
 
-        
+        private string data_file = "kursova_rabota.ini";
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
@@ -199,15 +203,15 @@ namespace KursovaRabota
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            this.SaveWorkersToFile("D:\\test.ini");
+            this.SaveWorkersToFile();
         }
 
 
         // Методи за записване в и зареждане от файл на информацията в listViewWorkers
 
-        private void SaveWorkersToFile(string filename)
+        private void SaveWorkersToFile()
         {
-            IniFile ini = new IniFile(filename);
+            IniFile ini = new IniFile(this.data_file);
             int items_counter = 0, subitems_counter;
             ini.IniWriteValue("meta", "number_of_items", "0");
             foreach (ListViewItem lvi in this.listViewWorkers.Items)
@@ -225,13 +229,24 @@ namespace KursovaRabota
             ini.IniWriteValue("meta", "number_of_items", items_counter.ToString());
         }
 
-        private void LoadWorkersFromFile(string filename)
+        private void LoadWorkersFromFile()
         {
+            int number_items;
+            List<string> items;
+
             this.listViewWorkers.Items.Clear();
 
-            IniFile ini = new IniFile(filename);
-            int number_items = int.Parse(ini.IniReadValue("meta", "number_of_items"));
-            List<string> items;
+            IniFile ini = new IniFile(this.data_file);
+            
+            try
+            {
+                 number_items = int.Parse(ini.IniReadValue("meta", "number_of_items"));
+            }
+            catch (System.FormatException e)
+            {
+                number_items = 0;
+            }
+            
             for (int i = 0; i < number_items; i++)
             {
                 items = new List<string>();
