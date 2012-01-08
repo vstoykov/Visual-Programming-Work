@@ -36,11 +36,11 @@ namespace KursovaRabota
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             string[] items = new string[]{
-                                 textBoxFirstName.Text,
-                                 textBoxSurName.Text,
-                                 textBoxLastName.Text,
+                                 this.textBoxFirstName.Text,
+                                 this.textBoxSurName.Text,
+                                 this.textBoxLastName.Text,
                                  this.addFormGetSex(),
-                                 textBoxAge.Text,
+                                 this.textBoxAge.Text,
                                  this.addFormGetEducation(),
                                  string.Join(", ", this.addFormGetLanguages())
                              };
@@ -256,6 +256,41 @@ namespace KursovaRabota
                 }
                 this.addNewWorker(items.ToArray());
             }
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            string[] search_items = new string[]{
+                this.textBoxSearchName.Text,
+                this.comboBoxSearchSex.Text,
+                this.comboBoxSearchEducation.Text,
+            };
+
+            ListViewItem lvi = null;
+            int startindex;
+
+            this.listViewSearchResults.Items.Clear();
+
+            foreach (string search in search_items)
+            {
+                if (search != "")
+                {
+                    do
+                    {
+                        startindex = (lvi == null) ? 0 : this.listViewWorkers.Items.IndexOf(lvi) + 1;
+                        if (startindex < this.listViewWorkers.Items.Count)
+                            lvi = this.listViewWorkers.FindItemWithText(search, true, startindex);
+                        else
+                            lvi = null;
+
+                        if (lvi != null)
+                        {
+                            this.listViewSearchResults.Items.Add((ListViewItem)lvi.Clone());
+                        }
+                    } while (lvi != null);
+                }
+            }
+
         }
 
     }
