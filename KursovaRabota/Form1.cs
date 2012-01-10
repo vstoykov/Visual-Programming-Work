@@ -25,6 +25,8 @@ namespace KursovaRabota
             this.groupBoxSex.Tag = false;
             this.groupBoxEducation.Tag = false;
 
+            this.textBoxFirstName.Focus();
+
             // Задаване на новото местоположение на файла с данни
             this.data_file = Directory.GetCurrentDirectory() + "\\" + this.data_file;
             // Зареждане на стойностите от файла в listViewWorkers
@@ -132,10 +134,15 @@ namespace KursovaRabota
 
         private void clearAddForm()
         {
-            this.textBoxFirstName.Text = "";
-            this.textBoxSurName.Text = "";
-            this.textBoxLastName.Text = "";
-            this.textBoxAge.Text = "";
+            // Метод който нулира формата за добавяне на служител
+            // за да в готова за добавяне на нов
+
+            this.textBoxFirstName.Clear();
+            this.textBoxSurName.Clear();
+            this.textBoxLastName.Clear();
+            this.textBoxAge.Clear();
+            this.textBoxFirstName.Focus();
+            this.textBoxAge.BackColor = System.Drawing.SystemColors.Window;
 
             this.radioButtonMale.Checked = false;
             this.radioButtonFemale.Checked = false;
@@ -150,9 +157,6 @@ namespace KursovaRabota
             this.checkBoxLangDe.Checked = false;
             this.checkBoxLangRu.Checked = false;
             this.checkBoxLangFr.Checked = false;
-
-            this.textBoxAge.BackColor = System.Drawing.SystemColors.Window;
-
         }
 
 

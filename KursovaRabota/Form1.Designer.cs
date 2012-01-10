@@ -63,8 +63,9 @@
             this.tabControlWorkers = new System.Windows.Forms.TabControl();
             this.tabPageAdd = new System.Windows.Forms.TabPage();
             this.tabPageView = new System.Windows.Forms.TabPage();
-            this.buttonSave = new System.Windows.Forms.Button();
+            this.splitContainerPreview = new System.Windows.Forms.SplitContainer();
             this.listViewWorkers = new System.Windows.Forms.ListView();
+            this.columnID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnFirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -72,9 +73,15 @@
             this.columnAge = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnEducation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnLanguages = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonSave = new System.Windows.Forms.Button();
             this.tabPageSearch = new System.Windows.Forms.TabPage();
-            this.columnID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainerSearch = new System.Windows.Forms.SplitContainer();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.comboBoxSearchEducation = new System.Windows.Forms.ComboBox();
+            this.comboBoxSearchSex = new System.Windows.Forms.ComboBox();
+            this.labelName = new System.Windows.Forms.Label();
+            this.textBoxSearchName = new System.Windows.Forms.TextBox();
+            this.listViewSearchResults = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -83,28 +90,21 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listViewSearchResults = new System.Windows.Forms.ListView();
-            this.splitContainerPreview = new System.Windows.Forms.SplitContainer();
-            this.textBoxSearchName = new System.Windows.Forms.TextBox();
-            this.labelName = new System.Windows.Forms.Label();
-            this.comboBoxSearchSex = new System.Windows.Forms.ComboBox();
-            this.comboBoxSearchEducation = new System.Windows.Forms.ComboBox();
-            this.buttonSearch = new System.Windows.Forms.Button();
             this.groupBoxSex.SuspendLayout();
             this.groupBoxEducation.SuspendLayout();
             this.groupBoxLanguages.SuspendLayout();
             this.tabControlWorkers.SuspendLayout();
             this.tabPageAdd.SuspendLayout();
             this.tabPageView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPreview)).BeginInit();
+            this.splitContainerPreview.Panel1.SuspendLayout();
+            this.splitContainerPreview.Panel2.SuspendLayout();
+            this.splitContainerPreview.SuspendLayout();
             this.tabPageSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSearch)).BeginInit();
             this.splitContainerSearch.Panel1.SuspendLayout();
             this.splitContainerSearch.Panel2.SuspendLayout();
             this.splitContainerSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPreview)).BeginInit();
-            this.splitContainerPreview.Panel1.SuspendLayout();
-            this.splitContainerPreview.Panel2.SuspendLayout();
-            this.splitContainerPreview.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxFirstName
@@ -407,16 +407,23 @@
             this.tabPageView.Text = "Прегледай";
             this.tabPageView.UseVisualStyleBackColor = true;
             // 
-            // buttonSave
+            // splitContainerPreview
             // 
-            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.Location = new System.Drawing.Point(522, 5);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 1;
-            this.buttonSave.Text = "Запази";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.splitContainerPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerPreview.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerPreview.Name = "splitContainerPreview";
+            this.splitContainerPreview.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerPreview.Panel1
+            // 
+            this.splitContainerPreview.Panel1.Controls.Add(this.listViewWorkers);
+            // 
+            // splitContainerPreview.Panel2
+            // 
+            this.splitContainerPreview.Panel2.Controls.Add(this.buttonSave);
+            this.splitContainerPreview.Size = new System.Drawing.Size(600, 310);
+            this.splitContainerPreview.SplitterDistance = 275;
+            this.splitContainerPreview.TabIndex = 2;
             // 
             // listViewWorkers
             // 
@@ -443,6 +450,11 @@
             this.listViewWorkers.TabIndex = 0;
             this.listViewWorkers.UseCompatibleStateImageBehavior = false;
             this.listViewWorkers.View = System.Windows.Forms.View.Details;
+            // 
+            // columnID
+            // 
+            this.columnID.Text = "ID";
+            this.columnID.Width = 30;
             // 
             // columnFirstName
             // 
@@ -478,6 +490,17 @@
             this.columnLanguages.Text = "Езици";
             this.columnLanguages.Width = 128;
             // 
+            // buttonSave
+            // 
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSave.Location = new System.Drawing.Point(522, 5);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 1;
+            this.buttonSave.Text = "Запази";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
             // tabPageSearch
             // 
             this.tabPageSearch.Controls.Add(this.splitContainerSearch);
@@ -488,11 +511,6 @@
             this.tabPageSearch.TabIndex = 2;
             this.tabPageSearch.Text = "Търси";
             this.tabPageSearch.UseVisualStyleBackColor = true;
-            // 
-            // columnID
-            // 
-            this.columnID.Text = "ID";
-            this.columnID.Width = 30;
             // 
             // splitContainerSearch
             // 
@@ -515,6 +533,88 @@
             this.splitContainerSearch.Size = new System.Drawing.Size(600, 310);
             this.splitContainerSearch.SplitterDistance = 32;
             this.splitContainerSearch.TabIndex = 2;
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(520, 0);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.TabIndex = 4;
+            this.buttonSearch.Text = "Търси";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // comboBoxSearchEducation
+            // 
+            this.comboBoxSearchEducation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxSearchEducation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxSearchEducation.FormattingEnabled = true;
+            this.comboBoxSearchEducation.Items.AddRange(new object[] {
+            "Начално",
+            "Основно",
+            "Средно",
+            "Бакалавър",
+            "Магистър"});
+            this.comboBoxSearchEducation.Location = new System.Drawing.Point(351, 4);
+            this.comboBoxSearchEducation.Name = "comboBoxSearchEducation";
+            this.comboBoxSearchEducation.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxSearchEducation.TabIndex = 3;
+            // 
+            // comboBoxSearchSex
+            // 
+            this.comboBoxSearchSex.AutoCompleteCustomSource.AddRange(new string[] {
+            "Мъж",
+            "Жена"});
+            this.comboBoxSearchSex.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxSearchSex.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxSearchSex.FormattingEnabled = true;
+            this.comboBoxSearchSex.Items.AddRange(new object[] {
+            "Мъж",
+            "Жена"});
+            this.comboBoxSearchSex.Location = new System.Drawing.Point(224, 4);
+            this.comboBoxSearchSex.Name = "comboBoxSearchSex";
+            this.comboBoxSearchSex.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxSearchSex.TabIndex = 2;
+            // 
+            // labelName
+            // 
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(17, 7);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(29, 13);
+            this.labelName.TabIndex = 1;
+            this.labelName.Text = "Име";
+            // 
+            // textBoxSearchName
+            // 
+            this.textBoxSearchName.Location = new System.Drawing.Point(76, 4);
+            this.textBoxSearchName.Name = "textBoxSearchName";
+            this.textBoxSearchName.Size = new System.Drawing.Size(142, 20);
+            this.textBoxSearchName.TabIndex = 0;
+            // 
+            // listViewSearchResults
+            // 
+            this.listViewSearchResults.Activation = System.Windows.Forms.ItemActivation.TwoClick;
+            this.listViewSearchResults.AllowColumnReorder = true;
+            this.listViewSearchResults.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8});
+            this.listViewSearchResults.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewSearchResults.FullRowSelect = true;
+            this.listViewSearchResults.Location = new System.Drawing.Point(0, 0);
+            this.listViewSearchResults.Name = "listViewSearchResults";
+            this.listViewSearchResults.ShowGroups = false;
+            this.listViewSearchResults.Size = new System.Drawing.Size(600, 274);
+            this.listViewSearchResults.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listViewSearchResults.TabIndex = 1;
+            this.listViewSearchResults.UseCompatibleStateImageBehavior = false;
+            this.listViewSearchResults.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -555,106 +655,6 @@
             this.columnHeader8.Text = "Езици";
             this.columnHeader8.Width = 128;
             // 
-            // listViewSearchResults
-            // 
-            this.listViewSearchResults.Activation = System.Windows.Forms.ItemActivation.TwoClick;
-            this.listViewSearchResults.AllowColumnReorder = true;
-            this.listViewSearchResults.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader7,
-            this.columnHeader8});
-            this.listViewSearchResults.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewSearchResults.FullRowSelect = true;
-            this.listViewSearchResults.Location = new System.Drawing.Point(0, 0);
-            this.listViewSearchResults.Name = "listViewSearchResults";
-            this.listViewSearchResults.ShowGroups = false;
-            this.listViewSearchResults.Size = new System.Drawing.Size(600, 274);
-            this.listViewSearchResults.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listViewSearchResults.TabIndex = 1;
-            this.listViewSearchResults.UseCompatibleStateImageBehavior = false;
-            this.listViewSearchResults.View = System.Windows.Forms.View.Details;
-            // 
-            // splitContainerPreview
-            // 
-            this.splitContainerPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerPreview.Location = new System.Drawing.Point(3, 3);
-            this.splitContainerPreview.Name = "splitContainerPreview";
-            this.splitContainerPreview.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainerPreview.Panel1
-            // 
-            this.splitContainerPreview.Panel1.Controls.Add(this.listViewWorkers);
-            // 
-            // splitContainerPreview.Panel2
-            // 
-            this.splitContainerPreview.Panel2.Controls.Add(this.buttonSave);
-            this.splitContainerPreview.Size = new System.Drawing.Size(600, 310);
-            this.splitContainerPreview.SplitterDistance = 275;
-            this.splitContainerPreview.TabIndex = 2;
-            // 
-            // textBoxSearchName
-            // 
-            this.textBoxSearchName.Location = new System.Drawing.Point(76, 4);
-            this.textBoxSearchName.Name = "textBoxSearchName";
-            this.textBoxSearchName.Size = new System.Drawing.Size(142, 20);
-            this.textBoxSearchName.TabIndex = 0;
-            // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(17, 7);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(29, 13);
-            this.labelName.TabIndex = 1;
-            this.labelName.Text = "Име";
-            // 
-            // comboBoxSearchSex
-            // 
-            this.comboBoxSearchSex.AutoCompleteCustomSource.AddRange(new string[] {
-            "Мъж",
-            "Жена"});
-            this.comboBoxSearchSex.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.comboBoxSearchSex.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxSearchSex.FormattingEnabled = true;
-            this.comboBoxSearchSex.Items.AddRange(new object[] {
-            "Мъж",
-            "Жена"});
-            this.comboBoxSearchSex.Location = new System.Drawing.Point(224, 4);
-            this.comboBoxSearchSex.Name = "comboBoxSearchSex";
-            this.comboBoxSearchSex.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxSearchSex.TabIndex = 2;
-            // 
-            // comboBoxSearchEducation
-            // 
-            this.comboBoxSearchEducation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBoxSearchEducation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxSearchEducation.FormattingEnabled = true;
-            this.comboBoxSearchEducation.Items.AddRange(new object[] {
-            "Начално",
-            "Основно",
-            "Средно",
-            "Бакалавър",
-            "Магистър"});
-            this.comboBoxSearchEducation.Location = new System.Drawing.Point(351, 4);
-            this.comboBoxSearchEducation.Name = "comboBoxSearchEducation";
-            this.comboBoxSearchEducation.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxSearchEducation.TabIndex = 3;
-            // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Location = new System.Drawing.Point(520, 0);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearch.TabIndex = 4;
-            this.buttonSearch.Text = "Търси";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -663,7 +663,7 @@
             this.Controls.Add(this.tabControlWorkers);
             this.MinimumSize = new System.Drawing.Size(630, 380);
             this.Name = "Form1";
-            this.Text = "Фирмени Работници";
+            this.Text = "Кандидат-Служители";
             this.groupBoxSex.ResumeLayout(false);
             this.groupBoxSex.PerformLayout();
             this.groupBoxEducation.ResumeLayout(false);
@@ -674,16 +674,16 @@
             this.tabPageAdd.ResumeLayout(false);
             this.tabPageAdd.PerformLayout();
             this.tabPageView.ResumeLayout(false);
+            this.splitContainerPreview.Panel1.ResumeLayout(false);
+            this.splitContainerPreview.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPreview)).EndInit();
+            this.splitContainerPreview.ResumeLayout(false);
             this.tabPageSearch.ResumeLayout(false);
             this.splitContainerSearch.Panel1.ResumeLayout(false);
             this.splitContainerSearch.Panel1.PerformLayout();
             this.splitContainerSearch.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSearch)).EndInit();
             this.splitContainerSearch.ResumeLayout(false);
-            this.splitContainerPreview.Panel1.ResumeLayout(false);
-            this.splitContainerPreview.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPreview)).EndInit();
-            this.splitContainerPreview.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
