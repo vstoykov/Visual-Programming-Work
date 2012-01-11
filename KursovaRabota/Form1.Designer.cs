@@ -90,6 +90,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonClear = new System.Windows.Forms.Button();
             this.groupBoxSex.SuspendLayout();
             this.groupBoxEducation.SuspendLayout();
             this.groupBoxLanguages.SuspendLayout();
@@ -337,7 +338,7 @@
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 9;
-            this.buttonAdd.Text = "Add";
+            this.buttonAdd.Text = "Добави";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
@@ -376,6 +377,7 @@
             // 
             // tabPageAdd
             // 
+            this.tabPageAdd.Controls.Add(this.buttonClear);
             this.tabPageAdd.Controls.Add(this.buttonAdd);
             this.tabPageAdd.Controls.Add(this.groupBoxEducation);
             this.tabPageAdd.Controls.Add(this.textBoxAge);
@@ -655,6 +657,16 @@
             this.columnHeader8.Text = "Езици";
             this.columnHeader8.Width = 128;
             // 
+            // buttonClear
+            // 
+            this.buttonClear.Location = new System.Drawing.Point(525, 31);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonClear.TabIndex = 12;
+            this.buttonClear.Text = "Изчистване";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -743,6 +755,7 @@
         private System.Windows.Forms.ComboBox comboBoxSearchSex;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.TextBox textBoxSearchName;
+        private System.Windows.Forms.Button buttonClear;
     }
 }
 

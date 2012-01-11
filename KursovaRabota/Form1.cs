@@ -137,12 +137,18 @@ namespace KursovaRabota
             // Метод който нулира формата за добавяне на служител
             // за да в готова за добавяне на нов
 
+            Color backcolor = System.Drawing.SystemColors.Window;
+
             this.textBoxFirstName.Clear();
             this.textBoxSurName.Clear();
             this.textBoxLastName.Clear();
             this.textBoxAge.Clear();
             this.textBoxFirstName.Focus();
-            this.textBoxAge.BackColor = System.Drawing.SystemColors.Window;
+
+            this.textBoxFirstName.BackColor = backcolor;
+            this.textBoxSurName.BackColor = backcolor;
+            this.textBoxLastName.BackColor = backcolor;
+            this.textBoxAge.BackColor = backcolor;
 
             this.radioButtonMale.Checked = false;
             this.radioButtonFemale.Checked = false;
@@ -295,6 +301,11 @@ namespace KursovaRabota
                 }
             }
 
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            this.clearAddForm();
         }
 
     }
