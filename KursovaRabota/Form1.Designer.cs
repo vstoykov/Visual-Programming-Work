@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "Венелин",
             "Красимиров",
@@ -91,6 +91,7 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.groupBoxSex.SuspendLayout();
             this.groupBoxEducation.SuspendLayout();
             this.groupBoxLanguages.SuspendLayout();
@@ -179,7 +180,7 @@
             this.groupBoxEducation.Location = new System.Drawing.Point(290, 27);
             this.groupBoxEducation.Name = "groupBoxEducation";
             this.groupBoxEducation.Size = new System.Drawing.Size(223, 139);
-            this.groupBoxEducation.TabIndex = 4;
+            this.groupBoxEducation.TabIndex = 5;
             this.groupBoxEducation.TabStop = false;
             this.groupBoxEducation.Text = "Образование";
             // 
@@ -254,7 +255,7 @@
             this.groupBoxLanguages.Location = new System.Drawing.Point(290, 172);
             this.groupBoxLanguages.Name = "groupBoxLanguages";
             this.groupBoxLanguages.Size = new System.Drawing.Size(223, 120);
-            this.groupBoxLanguages.TabIndex = 5;
+            this.groupBoxLanguages.TabIndex = 6;
             this.groupBoxLanguages.TabStop = false;
             this.groupBoxLanguages.Text = "Чужди Езици";
             // 
@@ -337,7 +338,7 @@
             this.buttonAdd.Location = new System.Drawing.Point(523, 287);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonAdd.TabIndex = 9;
+            this.buttonAdd.TabIndex = 7;
             this.buttonAdd.Text = "Добави";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -347,7 +348,7 @@
             this.textBoxAge.Location = new System.Drawing.Point(72, 204);
             this.textBoxAge.Name = "textBoxAge";
             this.textBoxAge.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAge.TabIndex = 10;
+            this.textBoxAge.TabIndex = 4;
             this.textBoxAge.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             this.textBoxAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAge_KeyPress);
             this.textBoxAge.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxEmpty_Validating);
@@ -373,7 +374,7 @@
             this.tabControlWorkers.Name = "tabControlWorkers";
             this.tabControlWorkers.SelectedIndex = 0;
             this.tabControlWorkers.Size = new System.Drawing.Size(614, 342);
-            this.tabControlWorkers.TabIndex = 12;
+            this.tabControlWorkers.TabIndex = 9;
             // 
             // tabPageAdd
             // 
@@ -422,6 +423,7 @@
             // 
             // splitContainerPreview.Panel2
             // 
+            this.splitContainerPreview.Panel2.Controls.Add(this.buttonDelete);
             this.splitContainerPreview.Panel2.Controls.Add(this.buttonSave);
             this.splitContainerPreview.Size = new System.Drawing.Size(600, 310);
             this.splitContainerPreview.SplitterDistance = 275;
@@ -442,8 +444,11 @@
             this.columnLanguages});
             this.listViewWorkers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewWorkers.FullRowSelect = true;
+            this.listViewWorkers.GridLines = true;
+            this.listViewWorkers.HideSelection = false;
+            listViewItem4.StateImageIndex = 0;
             this.listViewWorkers.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem4});
             this.listViewWorkers.Location = new System.Drawing.Point(0, 0);
             this.listViewWorkers.Name = "listViewWorkers";
             this.listViewWorkers.ShowGroups = false;
@@ -538,7 +543,8 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(520, 0);
+            this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearch.Location = new System.Drawing.Point(520, 4);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(75, 23);
             this.buttonSearch.TabIndex = 4;
@@ -552,6 +558,7 @@
             this.comboBoxSearchEducation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxSearchEducation.FormattingEnabled = true;
             this.comboBoxSearchEducation.Items.AddRange(new object[] {
+            "",
             "Начално",
             "Основно",
             "Средно",
@@ -571,6 +578,7 @@
             this.comboBoxSearchSex.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxSearchSex.FormattingEnabled = true;
             this.comboBoxSearchSex.Items.AddRange(new object[] {
+            "",
             "Мъж",
             "Жена"});
             this.comboBoxSearchSex.Location = new System.Drawing.Point(224, 4);
@@ -659,13 +667,24 @@
             // 
             // buttonClear
             // 
+            this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonClear.Location = new System.Drawing.Point(525, 31);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
-            this.buttonClear.TabIndex = 12;
+            this.buttonClear.TabIndex = 8;
             this.buttonClear.Text = "Изчистване";
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(5, 5);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.TabIndex = 2;
+            this.buttonDelete.Text = "Изтрий";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // Form1
             // 
@@ -756,6 +775,7 @@
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.TextBox textBoxSearchName;
         private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
 

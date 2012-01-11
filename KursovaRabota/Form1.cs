@@ -308,5 +308,19 @@ namespace KursovaRabota
             this.clearAddForm();
         }
 
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem lvi in this.listViewWorkers.SelectedItems)
+            {
+                lvi.Remove();
+            }
+            int counter = 1;
+            foreach (ListViewItem lvi in this.listViewWorkers.Items)
+            {
+                lvi.Text = counter.ToString();
+                counter++;
+            }
+        }
+
     }
 }
