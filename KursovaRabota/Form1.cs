@@ -33,7 +33,7 @@ namespace KursovaRabota
             this.LoadWorkersFromFile();
         }
 
-        private string data_file = "kursova_rabota.ini";
+        private string data_file = "kursova_rabota.dat";
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
@@ -221,51 +221,57 @@ namespace KursovaRabota
 
         private void SaveWorkersToFile()
         {
-            IniFile ini = new IniFile(this.data_file);
-            int items_counter = 0, subitems_counter;
-            ini.IniWriteValue("meta", "number_of_items", "0");
-            foreach (ListViewItem lvi in this.listViewWorkers.Items)
+			Int16 columns_count;
+			FileStream stream = new FileStream(this.data_file, FileMode.Create);
+			BinaryWriter writer = new BinaryWriter(stream);
+			
+			writer.Write((Int32)(this.listViewWorkers.Items.Count));
+            
+			foreach (ListViewItem lvi in this.listViewWorkers.Items)
             {
-                subitems_counter = 0;
-                foreach (ListViewItem.ListViewSubItem lvsi in lvi.SubItems)
-                {
-                    if (subitems_counter == 0 && lvi.Text.Equals(lvsi.Text))
-                        continue;
-                    ini.IniWriteValue(items_counter.ToString(), subitems_counter.ToString(), lvsi.Text);
-                    subitems_counter++;
-                }
-                items_counter++;
+                columns_count = (Int16)(lvi.SubItems.Count - 1);
+				
+				writer.Write(columns_count);
+				
+				// Пропускане на първата колона и записване на всички останали
+				for (int i = 1; i <= columns_count; i++){
+					writer.Write(lvi.SubItems[i].Text.ToString());
+				}
             }
-            ini.IniWriteValue("meta", "number_of_items", items_counter.ToString());
+			writer.Close();
         }
 
         private void LoadWorkersFromFile()
         {
-            int number_items;
-            List<string> items;
+            Int32 items_count;
+			Int16 columns_count;
+            List<string> columns;
+			FileStream stream = new FileStream(this.data_file, FileMode.OpenOrCreate);
+			BinaryReader reader = new BinaryReader(stream);
 
             this.listViewWorkers.Items.Clear();
-
-            IniFile ini = new IniFile(this.data_file);
             
             try
             {
-                 number_items = int.Parse(ini.IniReadValue("meta", "number_of_items"));
+				items_count = reader.ReadInt32();
             }
-            catch (System.FormatException e)
+            catch (EndOfStreamException)
             {
-                number_items = 0;
+                items_count = 0;
             }
-            
-            for (int i = 0; i < number_items; i++)
+			
+            for (int i = 0; i < items_count; i++)
             {
-                items = new List<string>();
-                for (int si = 0; si < 7; si++)
+                columns = new List<string>();
+				columns_count = reader.ReadInt16();
+				
+                for (int ci = 0; ci < columns_count; ci++)
                 {
-                    items.Add(ini.IniReadValue(i.ToString(), si.ToString()));
+					columns.Add(reader.ReadString());
                 }
-                this.addNewWorker(items.ToArray());
+                this.addNewWorker(columns.ToArray());
             }
+			reader.Close();
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
