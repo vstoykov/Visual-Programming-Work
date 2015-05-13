@@ -270,26 +270,15 @@ namespace KursovaRabota
             string sname = "", name = this.textBoxSearchName.Text;
             string ssex = "", sex = this.comboBoxSearchSex.Text;
             string seducation = "", education = this.comboBoxSearchEducation.Text;
-
-            int counter;
             
             this.listViewSearchResults.Items.Clear();
 
             foreach (ListViewItem lvi in this.listViewWorkers.Items)
             {
-                counter = 0;
-                sname = "";
-                foreach (ListViewItem.ListViewSubItem lvsi in lvi.SubItems)
-                {
-                    if ((new int[] { 1, 2, 3 }).Contains(counter))
-                        sname += lvsi.Text + " ";
-                    else if (counter == 4)
-                        ssex = lvsi.Text;
-                    else if (counter == 6)
-                        seducation = lvsi.Text;
-                    counter++;
-                }
-                ;
+				sname = lvi.SubItems [1].Text + lvi.SubItems [2].Text + lvi.SubItems [3].Text;
+				ssex = lvi.SubItems [4].Text;
+				seducation = lvi.SubItems [6].Text;
+
                 if ((name == "" || sname.ToLower().Contains(name.ToLower())) &&
                     (sex == "" || sex.ToLower() == ssex.ToLower()) &&
                     (education == "" || education.ToLower() == seducation.ToLower()))
