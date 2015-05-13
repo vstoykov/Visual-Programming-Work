@@ -28,7 +28,7 @@ namespace KursovaRabota
             this.textBoxFirstName.Focus();
 
             // Задаване на новото местоположение на файла с данни
-            this.data_file = Directory.GetCurrentDirectory() + "\\" + this.data_file;
+            this.data_file = Path.Combine(Directory.GetCurrentDirectory(), this.data_file);
             // Зареждане на стойностите от файла в listViewWorkers
             this.LoadWorkersFromFile();
         }
