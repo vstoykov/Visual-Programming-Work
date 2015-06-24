@@ -115,12 +115,12 @@ namespace KursovaRabota
         {
             // Прехвърля записите от полтата в listViewWorkers
 
-			List <string> columns = new List<string>(items);
-			// TODO: Оптимизиране на генерирането на новото ID
-			int id = this.listViewWorkers.Items.Count + 1;
-			columns.Insert(0, id.ToString());
+            List <string> columns = new List<string>(items);
+            // TODO: Оптимизиране на генерирането на новото ID
+            int id = this.listViewWorkers.Items.Count + 1;
+            columns.Insert(0, id.ToString());
 
-			this.listViewWorkers.Items.Add(new ListViewItem(columns.ToArray()));
+            this.listViewWorkers.Items.Add(new ListViewItem(columns.ToArray()));
         }
 
         private void clearAddForm()
@@ -212,57 +212,57 @@ namespace KursovaRabota
 
         private void SaveWorkersToFile()
         {
-			Int16 columns_count;
-			FileStream stream = new FileStream(this.data_file, FileMode.Create);
-			BinaryWriter writer = new BinaryWriter(stream);
-			
-			writer.Write((Int32)(this.listViewWorkers.Items.Count));
+            Int16 columns_count;
+            FileStream stream = new FileStream(this.data_file, FileMode.Create);
+            BinaryWriter writer = new BinaryWriter(stream);
             
-			foreach (ListViewItem lvi in this.listViewWorkers.Items)
+            writer.Write((Int32)(this.listViewWorkers.Items.Count));
+            
+            foreach (ListViewItem lvi in this.listViewWorkers.Items)
             {
                 columns_count = (Int16)(lvi.SubItems.Count - 1);
-				
-				writer.Write(columns_count);
-				
-				// Пропускане на първата колона и записване на всички останали
-				for (int i = 1; i <= columns_count; i++){
-					writer.Write(lvi.SubItems[i].Text.ToString());
-				}
+                
+                writer.Write(columns_count);
+                
+                // Пропускане на първата колона и записване на всички останали
+                for (int i = 1; i <= columns_count; i++){
+                    writer.Write(lvi.SubItems[i].Text.ToString());
+                }
             }
-			writer.Close();
+            writer.Close();
         }
 
         private void LoadWorkersFromFile()
         {
             Int32 items_count;
-			Int16 columns_count;
+            Int16 columns_count;
             List<string> columns;
-			FileStream stream = new FileStream(this.data_file, FileMode.OpenOrCreate);
-			BinaryReader reader = new BinaryReader(stream);
+            FileStream stream = new FileStream(this.data_file, FileMode.OpenOrCreate);
+            BinaryReader reader = new BinaryReader(stream);
 
             this.listViewWorkers.Items.Clear();
             
             try
             {
-				items_count = reader.ReadInt32();
+                items_count = reader.ReadInt32();
             }
             catch (EndOfStreamException)
             {
                 items_count = 0;
             }
-			
+            
             for (int i = 0; i < items_count; i++)
             {
                 columns = new List<string>();
-				columns_count = reader.ReadInt16();
-				
+                columns_count = reader.ReadInt16();
+                
                 for (int ci = 0; ci < columns_count; ci++)
                 {
-					columns.Add(reader.ReadString());
+                    columns.Add(reader.ReadString());
                 }
                 this.addNewWorker(columns.ToArray());
             }
-			reader.Close();
+            reader.Close();
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
@@ -270,28 +270,28 @@ namespace KursovaRabota
             string sname = "", name = this.textBoxSearchName.Text;
             string ssex = "", sex = this.comboBoxSearchSex.Text;
             string seducation = "", education = this.comboBoxSearchEducation.Text;
-			string[] columns = new string[7];
-			List<ListViewItem> foundItems = new List<ListViewItem>();
+            string[] columns = new string[7];
+            List<ListViewItem> foundItems = new List<ListViewItem>();
             
             this.listViewSearchResults.Items.Clear();
 
             foreach (ListViewItem lvi in this.listViewWorkers.Items)
             {
-				sname = lvi.SubItems [1].Text + lvi.SubItems [2].Text + lvi.SubItems [3].Text;
-				ssex = lvi.SubItems [4].Text;
-				seducation = lvi.SubItems [6].Text;
+                sname = lvi.SubItems [1].Text + lvi.SubItems [2].Text + lvi.SubItems [3].Text;
+                ssex = lvi.SubItems [4].Text;
+                seducation = lvi.SubItems [6].Text;
 
                 if ((name == "" || sname.ToLower().Contains(name.ToLower())) &&
                     (sex == "" || sex.ToLower() == ssex.ToLower()) &&
                     (education == "" || education.ToLower() == seducation.ToLower()))
                 {
-					for (int i=0; i < 7; i++) {
-						columns[i] = lvi.SubItems[i].Text;
-					}
-					foundItems.Add(new ListViewItem(columns));
+                    for (int i=0; i < 7; i++) {
+                        columns[i] = lvi.SubItems[i].Text;
+                    }
+                    foundItems.Add(new ListViewItem(columns));
                 }
             }
-			this.listViewSearchResults.Items.AddRange (foundItems.ToArray ());
+            this.listViewSearchResults.Items.AddRange (foundItems.ToArray ());
 
         }
 
