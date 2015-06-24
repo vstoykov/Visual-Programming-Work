@@ -270,6 +270,8 @@ namespace KursovaRabota
             string sname = "", name = this.textBoxSearchName.Text;
             string ssex = "", sex = this.comboBoxSearchSex.Text;
             string seducation = "", education = this.comboBoxSearchEducation.Text;
+			string[] columns = new string[7];
+			List<ListViewItem> foundItems = new List<ListViewItem>();
             
             this.listViewSearchResults.Items.Clear();
 
@@ -283,9 +285,13 @@ namespace KursovaRabota
                     (sex == "" || sex.ToLower() == ssex.ToLower()) &&
                     (education == "" || education.ToLower() == seducation.ToLower()))
                 {
-                    this.listViewSearchResults.Items.Add((ListViewItem)lvi.Clone());
+					for (int i=0; i < 7; i++) {
+						columns[i] = lvi.SubItems[i].Text;
+					}
+					foundItems.Add(new ListViewItem(columns));
                 }
             }
+			this.listViewSearchResults.Items.AddRange (foundItems.ToArray ());
 
         }
 
