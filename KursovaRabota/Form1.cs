@@ -115,21 +115,12 @@ namespace KursovaRabota
         {
             // Прехвърля записите от полтата в listViewWorkers
 
-            ListViewItem lvi;
-            ListViewItem.ListViewSubItem lvsi;
-         
-            lvi = new ListViewItem();
-            // TODO: Оптимизиране на генерирането на новото ID
-            lvi.Text = (this.listViewWorkers.Items.Count + 1).ToString();
+			List <string> columns = new List<string>(items);
+			// TODO: Оптимизиране на генерирането на новото ID
+			int id = this.listViewWorkers.Items.Count + 1;
+			columns.Insert(0, id.ToString());
 
-            foreach (string item in items)
-            {
-                lvsi = new ListViewItem.ListViewSubItem();
-                lvsi.Text = item;
-                lvi.SubItems.Add(lvsi);
-            }
-
-            this.listViewWorkers.Items.Add(lvi);
+			this.listViewWorkers.Items.Add(new ListViewItem(columns.ToArray()));
         }
 
         private void clearAddForm()
